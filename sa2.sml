@@ -1,6 +1,6 @@
 (* Solutions to SA2 assignment, Intro to ML *)
 
-(* Name:                                    *)
+(* Name:   Diego Morales                                 *)
 (* Time spent on HW6:
 *)
 
@@ -20,16 +20,31 @@ val () =
     (fn () => mynull [])
     true
 
+val () =
+    Unit.checkExpectWith Bool.toString "mynull [1] should be false"
+    (fn () => mynull [1])
+    false;
 
 (**** Problem B ****)
-(*
-fun firstVowel _ = false
+
+fun firstVowel [] = false
+| firstVowel (#"a" :: _) = true
+| firstVowel (#"e" :: _) = true
+| firstVowel (#"i" :: _) = true
+| firstVowel (#"o" :: _) = true
+| firstVowel (#"u" :: _) = true
+| firstVowel _ = false
 
 val () =
     Unit.checkExpectWith Bool.toString "firstVowel 'ack' should be true"
     (fn () => firstVowel [#"a",#"c",#"k"])
     true
-*)
+
+val () =
+    Unit.checkExpectWith Bool.toString "firstVowel 'yck' should be false"
+    (fn () => firstVowel [#"y",#"c",#"k"])
+    false
+
 (**** Problem C ****)
 (*
 fun reverse xs = xs
